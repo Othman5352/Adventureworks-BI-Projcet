@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\bin\Model.asdatabase
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\bin\Model.deploymenttargets
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\bin\Model.deploymentoptions
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\obj\Development\Aw2014_SSAS.smproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\obj\Development\Aw2014_SSAS.smproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\obj\Development\Model.asdatabase
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\obj\Development\Model.deploymentoptions
+C:\Users\Administrator\Desktop\Projects\BI Solution\Data Warehouse\Aw2014_SSAS\Aw2014_SSAS\obj\Development\Model.deploymenttargets
