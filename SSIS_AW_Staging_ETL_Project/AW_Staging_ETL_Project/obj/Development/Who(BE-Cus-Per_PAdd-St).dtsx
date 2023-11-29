@@ -1,0 +1,2765 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2023 6:06:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LOCALHOST"
+  DTS:CreatorName="LOCALHOST\Administrator"
+  DTS:DTSID="{02DDC8B5-9639-445F-A6D7-B1D0E9CC1FC9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{B68A0E45-C655-474E-9EAE-E44F8F74BF60}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_AW2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{12068892-6EF5-4202-B962-DF4AEDB37DB7}"
+      DTS:ObjectName="DB_AW2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LOCALHOST\SQL2019;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{12068892-6EF5-4202-B962-DF4AEDB37DB7}LOCALHOST\SQL2019.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CDDAA08A-6D27-424E-A64D-012B055B558C}"
+      DTS:ObjectName="DB_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LOCALHOST\SQL2019;Initial Catalog=AW2014_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{CDDAA08A-6D27-424E-A64D-012B055B558C}LOCALHOST\SQL2019.AW2014_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOCALHOST\SQL2019.AdventureWorks2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8375BC10-C93D-41FE-9EFA-AE9BE5F3AB8A}"
+      DTS:ObjectName="LOCALHOST\SQL2019.AdventureWorks2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LOCALHOST\SQL2019;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{8375BC10-C93D-41FE-9EFA-AE9BE5F3AB8A}LOCALHOST\SQL2019.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOCALHOST\SQL2019.AW2014_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C20277B6-B045-48CF-8656-8062E365B04E}"
+      DTS:ObjectName="LOCALHOST\SQL2019.AW2014_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LOCALHOST\SQL2019;Initial Catalog=AW2014_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C20277B6-B045-48CF-8656-8062E365B04E}LOCALHOST\SQL2019.AW2014_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Currency"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2c71b8a4-5b1c-4051-979a-21f6582ed135}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Currency">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Currency\ETL-ST-erpCurrency"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{715691e8-0d71-4ee8-998c-91184e5712cb}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ETL-ST-erpCurrency"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AW2014-salesCurrency"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[Currency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LOCALHOST\SQL2019.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[LOCALHOST\SQL2019.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                          length="3"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                          name="CurrencyCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CurrencyCode" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                          name="CurrencyCode" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived SSISTrackId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging-erpCurrency"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[erp].[Currency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LOCALHOST\SQL2019.AW2014_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[LOCALHOST\SQL2019.AW2014_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].Columns[CurrencyCode]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CurrencyCode"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[CurrencyCode]" />
+                        <inputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CurrencyCode" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Currency\ETL-ST-erpCurrency.Paths[Derived Column Output]"
+                  endId="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Currency\ETL-ST-erpCurrency.Paths[OLE DB Source Output]"
+                  endId="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Currency\Truncate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{aded4337-f5dd-41bc-a6b3-9825bb52c7a8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C20277B6-B045-48CF-8656-8062E365B04E}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE erp.Currency" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Currency.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{e3a13857-6d55-4405-be01-2695e4360233}"
+          DTS:From="Package\Currency\Truncate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Currency\ETL-ST-erpCurrency" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Customer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4dd088cb-74e3-4df7-9603-5c8c7530d725}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Customer\ETL-ST_erpPerson"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{d4531a89-30ec-4797-ba4b-760736938c7a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ETL-ST_erpPerson"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AW2014-salesCustomer"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_AW2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_AW2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[PersonID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[PersonID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[PersonID]"
+                          name="PersonID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[StoreID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[StoreID]"
+                          name="StoreID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          name="TerritoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          length="10"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          name="AccountNumber"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[PersonID]"
+                          dataType="i4"
+                          name="PersonID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                          dataType="i4"
+                          name="StoreID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="AccountNumber" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[PersonID]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[PersonID]"
+                          name="PersonID" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                          name="StoreID" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          name="TerritoryID" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          name="AccountNumber" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived SSISTrackId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ST-erpCustomer"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[erp].[Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[PersonID]"
+                          cachedDataType="i4"
+                          cachedName="PersonID"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[PersonID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[PersonID]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[StoreID]"
+                          cachedDataType="i4"
+                          cachedName="StoreID"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[StoreID]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
+                          cachedDataType="i4"
+                          cachedName="TerritoryID"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[AccountNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="AccountNumber"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[AccountNumber]" />
+                        <inputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[PersonID]"
+                          dataType="i4"
+                          name="PersonID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                          dataType="i4"
+                          name="StoreID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="AccountNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Customer\ETL-ST_erpPerson.Paths[Derived Column Output]"
+                  endId="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Customer\ETL-ST_erpPerson.Paths[OLE DB Source Output]"
+                  endId="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Customer\Truncate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{cc6cd51f-7db1-472a-8340-81efd98cd0f5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CDDAA08A-6D27-424E-A64D-012B055B558C}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE erp.Customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Customer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{20795bbb-bfdd-46bc-b7e9-13429577567b}"
+          DTS:From="Package\Customer\Truncate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Customer\ETL-ST_erpPerson" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Store"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{27401aed-4a63-4495-932c-b519a0be25ee}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Store">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Store\ETL-ST_erpStore"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{80405108-b45f-494b-b8af-ca1d0d4b7dab}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ETL-ST_erpStore"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AW2014-salesStore"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[Store]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_AW2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_AW2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Demographics]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[Demographics]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Demographics]"
+                          name="Demographics"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          name="SalesPersonID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[Demographics]"
+                          dataType="nText"
+                          name="Demographics" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          dataType="i4"
+                          name="SalesPersonID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                          name="SalesPersonID" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[Demographics]"
+                          dataType="nText"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[Demographics]"
+                          name="Demographics" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived SSISTrackId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Store\ETL-ST_erpStore\ST-erpPerson"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ST-erpPerson"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[erp].[Store]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[Demographics]"
+                          cachedDataType="nText"
+                          cachedName="Demographics"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[Demographics]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Demographics]" />
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[Demographics]"
+                          dataType="nText"
+                          name="Demographics" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Store\ETL-ST_erpStore.Paths[Derived Column Output]"
+                  endId="Package\Store\ETL-ST_erpStore\ST-erpPerson.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Store\ETL-ST_erpStore.Paths[OLE DB Source Output]"
+                  endId="Package\Store\ETL-ST_erpStore\Derived SSISTrackId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Store\ETL-ST_erpStore\AW2014-salesStore.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Store\Truncate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{29c4e7d7-50c5-4ba8-b7fe-4be70fd69297}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CDDAA08A-6D27-424E-A64D-012B055B558C}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE erp.Store" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Store.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{b1b88ff5-9054-4db1-ba14-53d5298531e8}"
+          DTS:From="Package\Store\Truncate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Store\ETL-ST_erpStore" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Territory"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{aa0c8a2b-bae2-4a95-bd42-ad7dea2f81bf}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Territory">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Territory\ETL-ST-erpTerritory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0fe1c0d1-1679-4f36-b3ac-bbd1010763a5}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ETL-ST-erpTerritory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AW2014-salesTerritory"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[SalesTerritory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LOCALHOST\SQL2019.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[LOCALHOST\SQL2019.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          name="TerritoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          length="3"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
+                          name="CountryRegionCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                          length="50"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
+                          name="Group"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[SalesYTD]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesYTD]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[SalesYTD]"
+                          name="SalesYTD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[SalesLastYear]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesLastYear]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[SalesLastYear]"
+                          name="SalesLastYear"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CostYTD]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CostYTD]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CostYTD]"
+                          name="CostYTD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CostLastYear]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CostLastYear]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CostLastYear]"
+                          name="CostLastYear"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CountryRegionCode" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          name="Group" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesYTD]"
+                          dataType="cy"
+                          name="SalesYTD" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesLastYear]"
+                          dataType="cy"
+                          name="SalesLastYear" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CostYTD]"
+                          dataType="cy"
+                          name="CostYTD" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CostLastYear]"
+                          dataType="cy"
+                          name="CostLastYear" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          name="TerritoryID" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          name="CountryRegionCode" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
+                          name="Group" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesYTD]"
+                          dataType="cy"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesYTD]"
+                          name="SalesYTD" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesLastYear]"
+                          dataType="cy"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesLastYear]"
+                          name="SalesLastYear" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CostYTD]"
+                          dataType="cy"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CostYTD]"
+                          name="CostYTD" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CostLastYear]"
+                          dataType="cy"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[CostLastYear]"
+                          name="CostLastYear" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived SSISTrackId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging-erpTerritory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[erp].[Territory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LOCALHOST\SQL2019.AW2014_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[LOCALHOST\SQL2019.AW2014_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
+                          cachedDataType="i4"
+                          cachedName="TerritoryID"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[CountryRegionCode]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CountryRegionCode"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryregionCode]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[Group]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Group"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[Group]" />
+                        <inputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryregionCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CountryregionCode" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          name="Group" />
+                        <externalMetadataColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Territory\ETL-ST-erpTerritory.Paths[Derived Column Output]"
+                  endId="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Territory\ETL-ST-erpTerritory.Paths[OLE DB Source Output]"
+                  endId="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Territory\Truncate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{489a18aa-b35b-4f78-90e8-1d3863cc3003}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C20277B6-B045-48CF-8656-8062E365B04E}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE erp.Territory" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Territory.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{c40171a8-3f98-4901-b0e6-151b1dc8113a}"
+          DTS:From="Package\Territory\Truncate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Territory\ETL-ST-erpTerritory" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Customer\ETL-ST_erpPerson"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Customer\Truncate"
+          TopLeft="28,5.5" />
+        <EdgeLayout
+          Id="Package\Customer.PrecedenceConstraints[Constraint]"
+          TopLeft="88.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="177,204"
+          Size="177,248"
+          Id="Package\Customer"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Store\ETL-ST_erpStore"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Store\Truncate"
+          TopLeft="24.5,5.5" />
+        <EdgeLayout
+          Id="Package\Store.PrecedenceConstraints[Constraint]"
+          TopLeft="85,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="170,204"
+          Size="170,248"
+          Id="Package\Store"
+          TopLeft="243,5.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Currency\ETL-ST-erpCurrency"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Currency\Truncate"
+          TopLeft="32,5.5" />
+        <EdgeLayout
+          Id="Package\Currency.PrecedenceConstraints[Constraint]"
+          TopLeft="92.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="185,204"
+          Size="185,248"
+          Id="Package\Currency"
+          TopLeft="473.5,5.49999999999989" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Territory\ETL-ST-erpTerritory"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Territory\Truncate"
+          TopLeft="31,5.5" />
+        <EdgeLayout
+          Id="Package\Territory.PrecedenceConstraints[Constraint]"
+          TopLeft="91.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="183,204"
+          Size="183,248"
+          Id="Package\Territory"
+          TopLeft="719.5,5.49999999999989" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Customer\ETL-ST_erpPerson">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer"
+          TopLeft="334,235" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Customer\ETL-ST_erpPerson\Derived SSISTrackId"
+          TopLeft="338,126" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer"
+          TopLeft="320,41" />
+        <EdgeLayout
+          Id="Package\Customer\ETL-ST_erpPerson.Paths[OLE DB Source Output]"
+          TopLeft="415,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,43"
+              Start="0,0"
+              End="11,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="7,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,21.5"
+                    Point2="11,21.5"
+                    Point3="11,25.5" />
+                  <mssgle:LineSegment
+                    End="11,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Customer\ETL-ST_erpPerson.Paths[Derived Column Output]"
+          TopLeft="426,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,67"
+              Start="0,0"
+              End="-14.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-10.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,33.5"
+                    Point2="-14.5,33.5"
+                    Point3="-14.5,37.5" />
+                  <mssgle:LineSegment
+                    End="-14.5,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer\ETL-ST_erpPerson\ST-erpCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer\ETL-ST_erpPerson\AW2014-salesCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Store\ETL-ST_erpStore">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Store\ETL-ST_erpStore\ST-erpPerson"
+          TopLeft="334,235" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Store\ETL-ST_erpStore\AW2014-salesStore"
+          TopLeft="320,41" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Store\ETL-ST_erpStore\Derived SSISTrackId"
+          TopLeft="338,126" />
+        <EdgeLayout
+          Id="Package\Store\ETL-ST_erpStore.Paths[OLE DB Source Output]"
+          TopLeft="405,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21,43"
+              Start="0,0"
+              End="21,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="17,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17,21.5"
+                    Point2="21,21.5"
+                    Point3="21,25.5" />
+                  <mssgle:LineSegment
+                    End="21,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Store\ETL-ST_erpStore.Paths[Derived Column Output]"
+          TopLeft="426,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21,67"
+              Start="0,0"
+              End="-21,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-17,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17,33.5"
+                    Point2="-21,33.5"
+                    Point3="-21,37.5" />
+                  <mssgle:LineSegment
+                    End="-21,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Store\ETL-ST_erpStore\ST-erpPerson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Store\ETL-ST_erpStore\AW2014-salesStore">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Currency\ETL-ST-erpCurrency">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Currency\ETL-ST-erpCurrency\Derived SSISTrackId"
+          TopLeft="356,104" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Currency\ETL-ST-erpCurrency\AW2014-salesCurrency"
+          TopLeft="294,29" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Currency\ETL-ST-erpCurrency\Staging-erpCurrency"
+          TopLeft="375,226" />
+        <EdgeLayout
+          Id="Package\Currency\ETL-ST-erpCurrency.Paths[OLE DB Source Output]"
+          TopLeft="387.5,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.5,33"
+              Start="0,0"
+              End="56.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="52.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.5,16.5"
+                    Point2="56.5,16.5"
+                    Point3="56.5,20.5" />
+                  <mssgle:LineSegment
+                    End="56.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Currency\ETL-ST-erpCurrency.Paths[Derived Column Output]"
+          TopLeft="444,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,80"
+              Start="0,0"
+              End="18.5,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="14.5,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,40"
+                    Point2="18.5,40"
+                    Point3="18.5,44" />
+                  <mssgle:LineSegment
+                    End="18.5,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Territory\ETL-ST-erpTerritory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Territory\ETL-ST-erpTerritory\Derived SSISTrackId"
+          TopLeft="356,104" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Territory\ETL-ST-erpTerritory\AW2014-salesTerritory"
+          TopLeft="294,29" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Territory\ETL-ST-erpTerritory\Staging-erpTerritory"
+          TopLeft="375,226" />
+        <EdgeLayout
+          Id="Package\Territory\ETL-ST-erpTerritory.Paths[OLE DB Source Output]"
+          TopLeft="387,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,33"
+              Start="0,0"
+              End="57,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="53,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,16.5"
+                    Point2="57,16.5"
+                    Point3="57,20.5" />
+                  <mssgle:LineSegment
+                    End="57,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Territory\ETL-ST-erpTerritory.Paths[Derived Column Output]"
+          TopLeft="444,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,80"
+              Start="0,0"
+              End="18,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="14,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,40"
+                    Point2="18,40"
+                    Point3="18,44" />
+                  <mssgle:LineSegment
+                    End="18,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
