@@ -27,7 +27,7 @@ Online transAdventureworks2014 OLTP database containing customer information, pr
 SSIS packages retrieve customer and product records from the SQL Server database and order data. 
 #### - Loading: 
  Data is loaded into the staging database tables within the SQL Server database.
-<img src"https://github.com/Othman5352/Adventureworks-BI-Projcet/blob/master/Screen%20Shots/SSIS/Staging%20DB/Satging_Person_dtsx.png" width="300">
+<img src"https://github.com/Othman5352/Adventureworks-BI-Projcet/blob/master/Screen%20Shots/SSIS/Staging%20DB/Satging_Person_dtsx.png" >
 ### Data Warehouse database
 #### - Extraction:
  SSIS packages retrieve customer records from the SQL Server database (Staging database) and order data. 
