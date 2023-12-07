@@ -38,6 +38,8 @@ Transformed data is loaded into the data warehouse tables within the SQL Server 
 ## Data Warehouse (SQL, SSAS)
 ### - Data Warehouse Schema: 
 The data warehouse follows a star schema design, including dimensions like Customer, Product, Currency, Territory, Reseller and Date, as well as a FactInternet and FactReseller tables for sales transactions. 
+![Model In SSAS](https://github.com/Othman5352/Adventureworks-BI-Projcet/assets/140977589/7e2cb6f5-09b4-42ac-af4a-9a8d3367bdcd)
+
 ### - SSAS: 
 Tabular models are created using SSAS to provide aggregated data for analysis. Dimensions, hierarchies, and measures are defined within the Model. 
 
